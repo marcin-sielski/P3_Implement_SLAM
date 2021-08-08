@@ -78,6 +78,12 @@ class robot:
             '''
            
         measurements = []
+
+        for i in range(self.num_landmarks):
+            dx = self.landmarks[i][0] - self.x + self.rand() * self.measurement_noise
+            dy = self.landmarks[i][1] - self.y + self.rand() * self.measurement_noise
+            if sqrt(dx**2+dy**2) < self.measurement_range:
+                measurements.append([i, dx, dy])
         
         ## TODO: iterate through all of the landmarks in a world
         
